@@ -32,4 +32,8 @@ export class HeroesService {
     // httpParams.set('_limit', 6);
     return this.http.get<Heroe[]>(`${this.apiUrl}/heroes`, { params: httpParams});
   }
+
+  agregarHeroe( heroe: Heroe ): Observable<Heroe> {
+    return this.http.post<Heroe>(`${ this.apiUrl }/heroes`, heroe);
+  }
 }
