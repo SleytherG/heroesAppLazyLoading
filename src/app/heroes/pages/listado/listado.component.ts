@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {HeroesService} from "../../services/heroes.service";
 import {Heroe} from "../../models/heroe.model";
 import {debounceTime} from "rxjs";
+import {AuthService} from "../../services/auth.service";
+import {Auth} from "../../../auth/interfaces/auth.interface";
 
 @Component({
   selector: 'app-listado',
@@ -11,9 +13,10 @@ import {debounceTime} from "rxjs";
 export class ListadoComponent implements OnInit {
 
   heroes: Heroe[] = [];
+  auth: Auth | undefined;
 
   constructor(
-    private heroesService: HeroesService
+    private heroesService: HeroesService,
   ) { }
 
   ngOnInit(): void {
@@ -23,7 +26,8 @@ export class ListadoComponent implements OnInit {
       )
       .subscribe((heroe) => {
         this.heroes = heroe;
-      })
+      });
+
   }
 
 }
